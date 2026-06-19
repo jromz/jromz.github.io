@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media Kit — jromzx × jyland06</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0c0f;
+    --bg2: #111418;
+    --bg3: #181c22;
+    --border: rgba(255,255,255,0.08);
+    --border-accent: rgba(0,255,136,0.3);
+    --green: #00ff88;
+    --green-dim: #00c968;
+    --green-muted: rgba(0,255,136,0.12);
+    --green-muted2: rgba(0,255,136,0.06);
+    --text: #f0f2f5;
+    --text-muted: #7a8595;
+    --text-dim: #4a5568;
+    --ig: #e1306c;
+    --tt: #69c9d0;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  /* HEADER */
+  .header {
+    border: 1px solid var(--border-accent);
+    border-radius: 16px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    background: var(--green-muted2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(0,255,136,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--green);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .eyebrow::before { content: '> '; }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  h1 span { color: var(--green); }
+
+  .handle-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .handle {
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .handle.ig { border-color: rgba(225,48,108,0.4); color: #f472b6; background: rgba(225,48,108,0.08); }
+  .handle.tt { border-color: rgba(105,201,208,0.4); color: #67e8f9; background: rgba(105,201,208,0.08); }
+
+  .dot { width: 7px; height: 7px; border-radius: 50%; }
+  .dot.ig { background: #e1306c; }
+  .dot.tt { background: #69c9d0; }
+
+  .tagline {
+    margin-top: 1.5rem;
+    color: var(--text-muted);
+    font-size: 15px;
+    max-width: 560px;
+    line-height: 1.7;
+  }
+
+  /* SECTION LABELS */
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  section { margin-bottom: 3rem; }
+
+  /* GROWTH ALERT BANNER */
+  .growth-banner {
+    background: var(--green-muted);
+    border: 1px solid var(--border-accent);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .pulse {
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--green);
+    flex-shrink: 0;
+    margin-top: 4px;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+
+  .growth-banner p { font-size: 14px; color: var(--text); line-height: 1.6; }
+  .growth-banner strong { color: var(--green); font-weight: 600; }
+
+  /* STAT GRIDS */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+
+  .stat-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+    transition: border-color 0.2s;
+  }
+
+  .stat-card:hover { border-color: rgba(255,255,255,0.15); }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+
+  .stat-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .stat-value.green { color: var(--green); }
+  .stat-value.ig-color { color: #f472b6; }
+  .stat-value.tt-color { color: #67e8f9; }
+
+  .stat-sub {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 3px;
+    font-family: var(--mono);
+  }
+
+  /* PLATFORM BLOCKS */
+  .platform-block {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .platform-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.25rem;
+  }
+
+  .platform-badge {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+
+  .platform-badge.ig { background: rgba(225,48,108,0.15); color: #f472b6; border: 1px solid rgba(225,48,108,0.3); }
+  .platform-badge.tt { background: rgba(105,201,208,0.15); color: #67e8f9; border: 1px solid rgba(105,201,208,0.3); }
+
+  .platform-name { font-size: 15px; font-weight: 600; color: var(--text); }
+  .platform-handle { font-family: var(--mono); font-size: 12px; color: var(--text-muted); }
+
+  /* BAR CHART ROWS */
+  .bar-row { margin-bottom: 10px; }
+  .bar-label-row { display: flex; justify-content: space-between; margin-bottom: 4px; }
+  .bar-name { font-size: 12px; color: var(--text-muted); }
+  .bar-val { font-family: var(--mono); font-size: 12px; color: var(--text); }
+  .bar-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; }
+
+  /* RATES TABLE */
+  .rates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .rate-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .rate-card.featured {
+    border-color: var(--border-accent);
+    background: var(--green-muted2);
+  }
+
+  .rate-card.featured::after {
+    content: 'Recommended';
+    position: absolute;
+    top: 12px; right: 12px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+    background: var(--green-muted);
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--border-accent);
+  }
+
+  .rate-type { font-size: 11px; color: var(--text-dim); font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+  .rate-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+  .rate-price { font-size: 26px; font-weight: 700; color: var(--green); letter-spacing: -0.02em; line-height: 1; margin-bottom: 4px; }
+  .rate-unit { font-size: 11px; color: var(--text-dim); margin-bottom: 12px; font-family: var(--mono); }
+  .rate-desc { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+
+  .rate-platform-tags { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+  .tag { font-family: var(--mono); font-size: 10px; padding: 3px 8px; border-radius: 4px; }
+  .tag.ig { background: rgba(225,48,108,0.1); color: #f472b6; }
+  .tag.tt { background: rgba(105,201,208,0.1); color: #67e8f9; }
+  .tag.both { background: var(--green-muted); color: var(--green); }
+
+  /* AUDIENCE & CONTENT SECTION */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 600px) {
+    .two-col { grid-template-columns: 1fr; }
+    h1 { font-size: 2rem; }
+    body { padding: 2rem 1.25rem 4rem; }
+    .header { padding: 2rem 1.5rem; }
+  }
+
+  .info-block {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .info-block h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .info-block h3 span {
+    font-size: 14px;
+  }
+
+  .pill-list { display: flex; flex-wrap: wrap; gap: 7px; }
+  .pill {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    background: var(--bg3);
+  }
+
+  .pill.active { border-color: var(--border-accent); color: var(--green); background: var(--green-muted); }
+
+  /* ENGAGEMENT SCORE */
+  .eng-score {
+    background: linear-gradient(135deg, var(--bg3) 0%, rgba(0,255,136,0.05) 100%);
+    border: 1px solid var(--border-accent);
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .big-score {
+    font-family: var(--mono);
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .score-context { flex: 1; min-width: 200px; }
+  .score-context h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .score-context p { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+  /* CONTACT */
+  .contact-block {
+    border: 1px solid var(--border-accent);
+    border-radius: 14px;
+    padding: 2rem;
+    background: var(--green-muted2);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-block h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .contact-block p { font-size: 13px; color: var(--text-muted); max-width: 340px; line-height: 1.7; }
+
+  .contact-links { display: flex; flex-direction: column; gap: 10px; }
+
+  .contact-link {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg3);
+    transition: border-color 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+
+  .contact-link:hover { border-color: var(--border-accent); color: var(--green); }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+    gap: 1rem;
+  }
+
+  .footer p { font-family: var(--mono); font-size: 11px; color: var(--text-dim); }
+
+  /* DIVIDER */
+  .divider { height: 1px; background: var(--border); margin: 2rem 0; }
+
+  /* Engagement highlight bar */
+  .highlight-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .highlight-pill {
+    font-family: var(--mono);
+    font-size: 12px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .highlight-pill .num { color: var(--green); font-weight: 700; }
+
+  /* chart canvas wrapper */
+  .chart-wrap { position: relative; width: 100%; height: 200px; margin-top: 1.25rem; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <p class="eyebrow">Verified Creator Media Kit · June 2026</p>
+  <h1>Cyber<span>sec</span> meets<br>Content.</h1>
+  <div class="handle-row">
+    <span class="handle ig"><span class="dot ig"></span>@jromzx on Instagram</span>
+    <span class="handle tt"><span class="dot tt"></span>@jyland06 on TikTok</span>
+  </div>
+  <p class="tagline">Cybersecurity professional, tech enthusiast, and intern life documentarian — making technical careers relatable to the next generation of builders through authentic daily content.</p>
+</header>
+
+<!-- GROWTH BANNER -->
+<div class="growth-banner">
+  <div class="pulse"></div>
+  <p><strong>Exceptional early growth signal:</strong> From near-zero to 3,795 Instagram followers and 853 TikTok followers in just 19 days — totaling over <strong>2.1 million combined views</strong> and <strong>151K+ engagements</strong> across both platforms with only 23 posts each. This is a creator trajectory sponsors rarely see at the beginning of an account.</p>
+</div>
+
+<!-- COMBINED METRICS -->
+<section>
+  <p class="section-label">19-Day Combined Performance</p>
+  <div class="stat-grid">
+    <div class="stat-card">
+      <p class="stat-label">Total Reach</p>
+      <p class="stat-value green">2.1M+</p>
+      <p class="stat-sub">combined views</p>
+    </div>
+    <div class="stat-card">
+      <p class="stat-label">Total Followers</p>
+      <p class="stat-value">4,648</p>
+      <p class="stat-sub">across platforms</p>
+    </div>
+    <div class="stat-card">
+      <p class="stat-label">Follower Growth</p>
+      <p class="stat-value green">+4,478</p>
+      <p class="stat-sub">from ~170 start</p>
+    </div>
+    <div class="stat-card">
+      <p class="stat-label">Total Likes</p>
+      <p class="stat-value">151.2K</p>
+      <p class="stat-sub">IG 96K + TT 55.2K</p>
+    </div>
+    <div class="stat-card">
+      <p class="stat-label">Total Shares</p>
+      <p class="stat-value">53.5K</p>
+      <p class="stat-sub">IG 44K + TT 9.5K</p>
+    </div>
+    <div class="stat-card">
+      <p class="stat-label">Total Saves</p>
+      <p class="stat-value">17.7K</p>
+      <p class="stat-sub">Instagram only</p>
+    </div>
+    <div class="stat-card">
+      <p class="stat-label">Posts Published</p>
+      <p class="stat-value">46</p>
+      <p class="stat-sub">23 per platform</p>
+    </div>
+    <div class="stat-card">
+      <p class="stat-label">Posting Cadence</p>
+      <p class="stat-value green">Daily</p>
+      <p class="stat-sub">on both platforms</p>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGEMENT SCORE -->
+<div class="eng-score">
+  <div class="big-score">A+</div>
+  <div class="score-context">
+    <h3>Viral-tier engagement rate</h3>
+    <p>Instagram's 17,651 saves and 44,021 shares on a sub-4K following represents a saves-to-followers ratio of ~4.6x and a shares-to-followers ratio of ~11.6x. Industry benchmarks consider anything above 1x exceptional. This content is being pushed across networks far beyond the follower base — exactly what sponsors pay for.</p>
+  </div>
+</div>
+
+<!-- PLATFORM BREAKDOWN -->
+<section>
+  <p class="section-label">Platform Breakdown</p>
+
+  <!-- INSTAGRAM -->
+  <div class="platform-block">
+    <div class="platform-header">
+      <span class="platform-badge ig">Instagram</span>
+      <span class="platform-name">@jromzx</span>
+      <span class="platform-handle"> · Reels / Posts</span>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <p class="stat-label">Followers</p>
+        <p class="stat-value ig-color">3,795</p>
+        <p class="stat-sub">started at 70</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Views</p>
+        <p class="stat-value">1.6M</p>
+        <p class="stat-sub">19 days</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Likes</p>
+        <p class="stat-value">96K</p>
+        <p class="stat-sub">avg ~4.2K/post</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Saves</p>
+        <p class="stat-value ig-color">17.7K</p>
+        <p class="stat-sub">avg ~768/post</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Shares</p>
+        <p class="stat-value">44K</p>
+        <p class="stat-sub">avg ~1.9K/post</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Reposts</p>
+        <p class="stat-value">1,727</p>
+        <p class="stat-sub">avg ~75/post</p>
+      </div>
+    </div>
+
+    <p style="font-size: 13px; color: var(--text-muted); margin-top: 1rem;">Engagement breakdown by type — share vs. save vs. comment ratio shows high save intent (educational content being bookmarked) and extremely high share rate (viral distribution signal).</p>
+
+    <div style="margin-top: 1.25rem;">
+      <div class="bar-row">
+        <div class="bar-label-row"><span class="bar-name">Likes</span><span class="bar-val">96,000</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width: 100%; background: #f472b6;"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label-row"><span class="bar-name">Shares</span><span class="bar-val">44,021</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width: 46%; background: rgba(244,114,182,0.6);"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label-row"><span class="bar-name">Saves</span><span class="bar-val">17,651</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width: 18%; background: rgba(244,114,182,0.4);"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label-row"><span class="bar-name">Reposts</span><span class="bar-val">1,727</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width: 2%; background: rgba(244,114,182,0.3);"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label-row"><span class="bar-name">Comments</span><span class="bar-val">878</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width: 1%; background: rgba(244,114,182,0.2);"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIKTOK -->
+  <div class="platform-block">
+    <div class="platform-header">
+      <span class="platform-badge tt">TikTok</span>
+      <span class="platform-name">@jyland06</span>
+      <span class="platform-handle"> · Short-form Video</span>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <p class="stat-label">Followers</p>
+        <p class="stat-value tt-color">853</p>
+        <p class="stat-sub">+655 from start</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Views</p>
+        <p class="stat-value">485K</p>
+        <p class="stat-sub">19 days</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Likes</p>
+        <p class="stat-value">55.2K</p>
+        <p class="stat-sub">avg ~2.4K/post</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Shares</p>
+        <p class="stat-value">9,500</p>
+        <p class="stat-sub">avg ~413/post</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Comments</p>
+        <p class="stat-value">283</p>
+        <p class="stat-sub">avg ~12/post</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Like rate</p>
+        <p class="stat-value green">11.4%</p>
+        <p class="stat-sub">vs ~4–6% avg</p>
+      </div>
+    </div>
+
+    <p style="font-size: 13px; color: var(--text-muted); margin-top: 1rem;">TikTok's 11.4% like-to-view rate is nearly 2–3x the platform average, indicating strong content resonance. With only 853 followers driving 485K views, this account is operating almost entirely on algorithmic reach — a powerful signal for future scalability.</p>
+  </div>
+</section>
+
+<!-- CONTENT & AUDIENCE -->
+<section>
+  <p class="section-label">Content & Audience</p>
+  <div class="two-col">
+    <div class="info-block">
+      <h3><span>📌</span> Content Pillars</h3>
+      <div class="pill-list">
+        <span class="pill active">Cybersecurity</span>
+        <span class="pill active">Tech career tips</span>
+        <span class="pill active">Intern life</span>
+        <span class="pill active">Day-in-the-life</span>
+        <span class="pill">Career advice</span>
+        <span class="pill">Coding</span>
+        <span class="pill">Tech education</span>
+        <span class="pill">Productivity</span>
+      </div>
+    </div>
+    <div class="info-block">
+      <h3><span>👤</span> Target Audience</h3>
+      <div class="pill-list">
+        <span class="pill active">CS / IT students</span>
+        <span class="pill active">Tech job seekers</span>
+        <span class="pill active">Cybersecurity enthusiasts</span>
+        <span class="pill">Early-career professionals</span>
+        <span class="pill">Gen Z &amp; Millennial</span>
+        <span class="pill">Career changers</span>
+      </div>
+    </div>
+    <div class="info-block">
+      <h3><span>📅</span> Content Frequency</h3>
+      <div class="pill-list">
+        <span class="pill active">Daily posting</span>
+        <span class="pill active">Both platforms simultaneously</span>
+        <span class="pill">Consistent schedule</span>
+        <span class="pill">23+ posts in 19 days</span>
+      </div>
+    </div>
+    <div class="info-block">
+      <h3><span>🎯</span> Sponsor Fit — Ideal Partners</h3>
+      <div class="pill-list">
+        <span class="pill active">Cybersecurity tools</span>
+        <span class="pill active">SaaS / Dev tools</span>
+        <span class="pill active">EdTech / certifications</span>
+        <span class="pill">VPN / privacy apps</span>
+        <span class="pill">Coding bootcamps</span>
+        <span class="pill">Tech hardware</span>
+        <span class="pill">Productivity apps</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY SELLING POINTS -->
+<section>
+  <p class="section-label">Why Partner With This Creator</p>
+  <div class="highlight-row">
+    <div class="highlight-pill"><span class="num">2,633%</span> follower growth in 19 days (IG)</div>
+    <div class="highlight-pill"><span class="num">655%+</span> follower growth (TikTok)</div>
+    <div class="highlight-pill"><span class="num">11.6x</span> shares-to-follower ratio (IG)</div>
+    <div class="highlight-pill"><span class="num">11.4%</span> like rate (TikTok)</div>
+    <div class="highlight-pill">Daily content on both platforms</div>
+    <div class="highlight-pill">Niche tech/cybersecurity audience</div>
+  </div>
+  <div class="two-col">
+    <div class="info-block">
+      <h3>📈 Viral trajectory, early stage</h3>
+      <p style="font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-top: 6px;">Getting in now means locking in authentic partnership rates before this account scales. The share velocity and view-to-follower ratio indicates algorithmic momentum that hasn't peaked.</p>
+    </div>
+    <div class="info-block">
+      <h3>🔒 High-intent, niche audience</h3>
+      <p style="font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-top: 6px;">Cybersecurity and tech career content attracts highly educated, career-focused viewers with purchasing intent for tools, courses, and software — one of the most valuable demographics in creator marketing.</p>
+    </div>
+    <div class="info-block">
+      <h3>💾 Save rate = decision makers</h3>
+      <p style="font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-top: 6px;">17,651 saves means audience members are bookmarking content for later use — not passive scrollers, but people actively referencing this creator's advice for career and tech decisions.</p>
+    </div>
+    <div class="info-block">
+      <h3>🔁 Organic amplification</h3>
+      <p style="font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-top: 6px;">44K Instagram shares from a 3.8K account means each follower is, on average, sharing content ~11 times — an extreme signal of peer-to-peer organic distribution that multiplies sponsor reach.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SUGGESTED RATES -->
+<section>
+  <p class="section-label">Suggested Sponsorship Rates</p>
+  <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.7;">Rates are calibrated for early-stage but high-velocity accounts in a high-value niche. Priced to give sponsors strong ROI now, with a clear pathway to adjusted rates as the account scales past 10K and 50K followers.</p>
+
+  <div class="rates-grid">
+    <div class="rate-card">
+      <p class="rate-type">Instagram</p>
+      <p class="rate-name">Single Reel Integration</p>
+      <div class="rate-platform-tags"><span class="tag ig">Instagram</span></div>
+      <p class="rate-price">$150–250</p>
+      <p class="rate-unit">per post</p>
+      <p class="rate-desc">15–30 second integration in a Reel. Brand mention, product placement, or verbal callout. Access to avg 69K views per post (1.6M ÷ 23).</p>
+    </div>
+
+    <div class="rate-card">
+      <p class="rate-type">TikTok</p>
+      <p class="rate-name">Single Video Integration</p>
+      <div class="rate-platform-tags"><span class="tag tt">TikTok</span></div>
+      <p class="rate-price">$75–150</p>
+      <p class="rate-unit">per post</p>
+      <p class="rate-desc">15–30 second TikTok integration. Access to avg 21K views per video (485K ÷ 23) with an 11.4% like rate audience.</p>
+    </div>
+
+    <div class="rate-card featured">
+      <p class="rate-type">Cross-platform</p>
+      <p class="rate-name">Dual-Platform Package</p>
+      <div class="rate-platform-tags"><span class="tag both">IG + TikTok</span></div>
+      <p class="rate-price">$200–350</p>
+      <p class="rate-unit">per campaign post</p>
+      <p class="rate-desc">Same campaign integration posted on both Instagram and TikTok simultaneously. Best value — reaches both audiences at a ~25% bundle discount.</p>
+    </div>
+
+    <div class="rate-card">
+      <p class="rate-type">Instagram</p>
+      <p class="rate-name">Dedicated Sponsored Post</p>
+      <div class="rate-platform-tags"><span class="tag ig">Instagram</span></div>
+      <p class="rate-price">$300–500</p>
+      <p class="rate-unit">per post</p>
+      <p class="rate-desc">Full post dedicated to brand. Includes link in bio (48hr), story mention, and caption CTA. Ideal for app/tool launches or course promotions.</p>
+    </div>
+
+    <div class="rate-card">
+      <p class="rate-type">Multi-post</p>
+      <p class="rate-name">Weekly Campaign (7 days)</p>
+      <div class="rate-platform-tags"><span class="tag both">IG + TikTok</span></div>
+      <p class="rate-price">$800–1,500</p>
+      <p class="rate-unit">per week</p>
+      <p class="rate-desc">Daily posts across both platforms for one week. Sustained brand presence with an estimated 630K–1M combined impressions at current trajectory.</p>
+    </div>
+
+    <div class="rate-card">
+      <p class="rate-type">Long-term</p>
+      <p class="rate-name">30-Day Ambassador</p>
+      <div class="rate-platform-tags"><span class="tag both">IG + TikTok</span></div>
+      <p class="rate-price">$2,000–3,500</p>
+      <p class="rate-unit">per month</p>
+      <p class="rate-desc">Full-month partnership. 4+ dedicated posts, ongoing story mentions, bio link, and exclusive brand alignment in the cybersecurity/tech niche. Includes usage rights.</p>
+    </div>
+  </div>
+
+  <div class="info-block" style="margin-top: 1.5rem; border-color: rgba(0,255,136,0.15);">
+    <h3>📌 Rate context</h3>
+    <p style="font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-top: 6px;">Standard influencer pricing benchmarks use a CPM (cost per thousand views) of $10–30 for niche creator content. At 69K avg Instagram views per post, that implies a fair market rate of $690–$2,070 per post — but rates here are intentionally set below market to reflect current follower count and offer sponsors early-mover advantage. Expect rates to increase significantly once followers cross 10K on either platform.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section>
+  <p class="section-label">Let's Work Together</p>
+  <div class="contact-block">
+    <div>
+      <h3>Ready to partner?</h3>
+      <p>Reach out to discuss campaign goals, custom package options, or to receive a detailed analytics report. Response within 24 hours.</p>
+    </div>
+    <div class="contact-links">
+      <a class="contact-link" href="https://www.instagram.com/jromzx/" target="_blank">
+        <span class="dot ig"></span>instagram.com/jromzx
+      </a>
+      <a class="contact-link" href="https://www.tiktok.com/@jyland06" target="_blank">
+        <span class="dot tt"></span>tiktok.com/@jyland06
+      </a>
+      <a class="contact-link" href="https://linktr.ee/jromzx" target="_blank">
+        🔗 linktr.ee/jromzx
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>jromzx × jyland06 · Media Kit · June 2026</p>
+  <p>Stats represent first 19 days of active posting · All figures self-reported from platform analytics</p>
+</div>
+
+</body>
+</html>
